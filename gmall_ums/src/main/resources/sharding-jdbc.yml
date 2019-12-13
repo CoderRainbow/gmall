@@ -1,0 +1,23 @@
+dataSources:
+  ##主库
+  db_master: !!com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.33.129:3308/gmall_ums?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    ##从库1
+  db_slave1: !!com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.33.129:3318/gmall_ums?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    ##从库2
+  db_slave2: !!com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.33.129:3328/gmall_ums?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+masterSlaveRule:
+  name: db_ms
+  masterDataSourceName: db_master
+  slaveDataSourceNames: [db_slave1,db_slave2]
